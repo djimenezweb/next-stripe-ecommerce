@@ -21,7 +21,7 @@ export default function Checkout() {
 
     async function fetchSecret() {
       try {
-        const res = await fetch('http://localhost:3000/api/create-payment-intent', {
+        const res = await fetch('/api/create-payment-intent', {
           next: { revalidate: 0 },
           cache: 'no-cache',
           method: 'POST',
