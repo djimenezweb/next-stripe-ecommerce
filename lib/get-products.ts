@@ -11,7 +11,8 @@ export async function getProducts() {
         name: product.name,
         description: product.description,
         images: product.images,
-        bgg: product.metadata.bgg,
+        bggURL: product.metadata.bggURL,
+        bggID: product.metadata.bggID,
         priceEur: prices.data[0].unit_amount as number,
         currency: prices.data[0].currency
       };

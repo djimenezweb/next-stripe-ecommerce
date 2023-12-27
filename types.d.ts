@@ -3,7 +3,8 @@ type Product = {
   name: string;
   description: string | null;
   images: string[];
-  bgg: string;
+  bggURL: string;
+  bggID: string;
   priceEur: number | 0;
   currency: string;
 };
@@ -12,6 +13,7 @@ type CartItem = {
   name: string;
   id: string;
   price: number | 0;
+  image: string;
   quantity: number | 0;
 };
 

@@ -10,7 +10,6 @@ export const POST = async (req: Request) => {
   const session = await auth();
 
   if (!session?.user) {
-    console.log('NO USER');
     return NextResponse.json({ error: { message: 'User not logged in' } }, { status: 401 });
     // Redirect no funciona
     // return NextResponse.redirect('http://localhost:3000/');
@@ -35,11 +34,8 @@ export const POST = async (req: Request) => {
     }
   };
 
-  console.log('orderData', orderData);
-
   // Check if the payment intent already exists
   if (payment_intent_id) {
-    console.log('payment_intent_id already exists');
     const current_intent = await stripe.paymentIntents.retrieve(payment_intent_id);
     if (current_intent) {
       const updated_intent = await stripe.paymentIntents.update(payment_intent_id, { amount: orderData.amount });
@@ -74,7 +70,6 @@ export const POST = async (req: Request) => {
       });
     }
   } else {
-    console.log('Creating new order');
     // Payment intent doesn't exist, create a new order with Prisma
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Number(orderData.amount),

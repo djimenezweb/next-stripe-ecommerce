@@ -14,7 +14,6 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(payload, signature!, webhookSecret);
     switch (event?.type) {
       case 'payment_intent.succeeded':
-        console.log('Stripe Webhook API route - Payment succeeded');
         const paymentIntentSucceeded = event.data.object;
         const updateOrder = await prisma.order.update({ where: { paymentIntentID: paymentIntentSucceeded.id }, data: { status: 'completed' } });
         break;

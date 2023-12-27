@@ -4,7 +4,7 @@ import { signIn, signOut } from 'next-auth/react';
 
 function SignInButton() {
   return (
-    <button className="bg-orange-600 text-orange-100 py-[0.5em] px-[1em] rounded-md hover:opacity-75" onClick={() => signIn()}>
+    <button className="bg-orange-600 hover:bg-orange-500 text-orange-100 py-[0.5em] px-[1em] rounded-md" onClick={() => signIn()}>
       Sign in
     </button>
   );
@@ -12,7 +12,7 @@ function SignInButton() {
 
 function SignOutButton() {
   return (
-    <button className="bg-red-600 text-orange-100 py-[0.5em] px-[1em] rounded-md hover:opacity-75" onClick={() => signOut()}>
+    <button className="bg-red-600 hover:bg-red-500 text-orange-100 py-[0.5em] px-[1em] rounded-md" onClick={() => signOut({ callbackUrl: '/' })}>
       Sign out
     </button>
   );

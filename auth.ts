@@ -31,5 +31,8 @@ export const {
       session.user = user;
       return session;
     }
+  },
+  pages: {
+    signIn: '/signin'
   }
 });
